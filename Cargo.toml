@@ -2,7 +2,7 @@
 name = "vim-zellij-navigator"
 version = "0.1.0"
 authors = ["Ruben Hias"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 ansi_term = "0.12.1"

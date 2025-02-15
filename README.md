@@ -4,7 +4,7 @@ This plugin is designed to give the same functionality as [vim-tmux-navigator](h
 Note: When a new session is started, a pane flashes the first time each direction is pressed. This will be fixed in a near release of Zellij when headless mode is available.
 
 ## Version 0.1.0 vs 0.2.0
-Version 0.1.0 makes use of an additional Neovim plugin to know whether Neovim is currently opened. 
+Version 0.1.0 makes use of an additional Neovim plugin to know whether Neovim is currently opened.
 Starting from 0.2.0 the plugin makes use of the Zellij `list-clients` command to remove the need for the Neovim plugin, this currently has no plugin binding so a shell command needs to be launched from the plugin, which introduces some delay. If this bothers you, you can continue using 0.1.0 by changing the keybindings to use this version. This problem will be gone in the next release when direct plugin bindings for `list-clients` have released.
 
 ## Installation
@@ -34,7 +34,7 @@ Available commands:
 - `move_focus_or_tab` with payload `up`, `down`, `left`, `right` to move the focus in the corresponding direction or switch to the next tab if the focus is already at the edge.
 - `resize` with payload `up`, `down`, `left`, `right` to resize the pane in the corresponding direction.
 
-If you use configuration for the plugin it must be added to every command in order to function consistently. 
+If you use configuration for the plugin it must be added to every command in order to function consistently.
 This is because the plugin is loaded with the configuration of the first command executed.
 
 Available configuration options:
@@ -49,9 +49,7 @@ keybinds {
                 name "move_focus_or_tab";
                 payload "left";
 
-                // Plugin Configuration
                 move_mod "ctrl"; // Optional, should be added on every command if you want to use it
-                resize_mod "alt"; // Optional, should be added on every command if you want to use it
             };
         }
 
@@ -61,7 +59,6 @@ keybinds {
                 payload "down";
 
                 move_mod "ctrl";
-                resize_mod "alt";
             };
         }
 
@@ -81,6 +78,41 @@ keybinds {
                 payload "right";
 
                 move_mod "ctrl";
+            };
+        }
+
+        bind "Alt h" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "left";
+
+                resize_mod "alt"; // Optional, should be added on every command if you want to use it
+            };
+        }
+
+        bind "Alt j" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "down";
+
+                resize_mod "alt";
+            };
+        }
+
+        bind "Alt k" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "up";
+
+                resize_mod "alt";
+            };
+        }
+
+        bind "Alt l" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "right";
+
                 resize_mod "alt";
             };
         }
